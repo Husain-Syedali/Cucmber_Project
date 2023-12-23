@@ -1,4 +1,4 @@
-name: Test
+name: Jdoodle testing
 
 env:
   CI: true
