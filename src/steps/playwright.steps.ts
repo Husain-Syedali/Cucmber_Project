@@ -15,9 +15,9 @@ Given('JDoodle website', async function (this: ICustomWorld) {
 Given('Code Snippet in editor', async function (this: ICustomWorld) {
   const page = this.page!;
 
-  await page.locator('#code div').filter({ hasText: 'public class MyClass { public' }).nth(1).waitFor()
+  await page.locator('#code div').filter({ hasText: 'public class MyClass { public' }).nth(1).waitFor();
 
-  await page.locator('#code div').filter({ hasText: 'public static void main(String args[]) {' }).nth(1).waitFor()
+  await page.locator('#code div').filter({ hasText: 'public static void main(String args[]) {' }).nth(1).waitFor();
 
 
 });
@@ -59,14 +59,14 @@ When('{string} verify menu items', async function (this: ICustomWorld, Item: str
 
 
 });
-let icount = false
+let icount = false;
 Given('Verify {string} language selection', async function (this: ICustomWorld, language: string) {
 
   const page = this.page!;
   await page.waitForTimeout(2000);
   //await page.locator('#code div').filter({ hasText: 'public class MyClass { public' }).nth(1).waitFor()
   if (icount == false) {
-    icount = true
+    icount = true;
     await page.goto(config.BASE_URL);
     await page.locator('#navbar-collapse-basic div').filter({ hasText: 'Ada' }).nth(4).click();
   } else {
@@ -95,13 +95,13 @@ Then('verify Platform Price page', async function () {
   // Write code here that turns the phrase above into concrete actions
   const page = this.page!;
   await expect.soft(page.getByRole('tabpanel')).toContainText('Team🔥 Most Popular$100/ MonthPower your team\'s successIDE and Plugins Standard');
-  await expect.soft(page.getByRole('tabpanel')).toContainText('Unlock the basics')
-  await expect.soft(page.getByRole('tabpanel')).toContainText('/ Month')
-  await expect.soft(page.getByRole('tabpanel')).toContainText('IDE and Plugins')
-  await expect.soft(page.getByRole('tabpanel')).toContainText('Standard IDE')
-  await expect.soft(page.getByRole('tabpanel')).toContainText('Unlimited customizable WYSIWYG Plugins')
-  await expect.soft(page.getByRole('tabpanel')).toContainText('File upload feature')
-  await expect.soft(page.getByRole('tabpanel')).toContainText('Plugin to host page communication')
+  await expect.soft(page.getByRole('tabpanel')).toContainText('Unlock the basics');
+  await expect.soft(page.getByRole('tabpanel')).toContainText('/ Month');
+  await expect.soft(page.getByRole('tabpanel')).toContainText('IDE and Plugins');
+  await expect.soft(page.getByRole('tabpanel')).toContainText('Standard IDE');
+  await expect.soft(page.getByRole('tabpanel')).toContainText('Unlimited customizable WYSIWYG Plugins');
+  await expect.soft(page.getByRole('tabpanel')).toContainText('File upload feature');
+  await expect.soft(page.getByRole('tabpanel')).toContainText('Plugin to host page communication');
   await page.waitForTimeout(10000);
 });
 
