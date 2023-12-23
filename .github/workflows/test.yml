@@ -38,7 +38,7 @@ jobs:
   dependabot:
     name: 'Dependabot'
     needs: [run]
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}} # Detect that the PR author is dependabot
     steps:
       - name: Enable auto-merge for Dependabot PRs
