@@ -9,27 +9,11 @@ Given('JDoodle website', async function (this: ICustomWorld) {
   await page.goto(config.BASE_URL);
 });
 
-Given('Code Snippet in editor', async function (this: ICustomWorld) {
-  const page = this.page!;
-
-  await page
-    .locator('#code div')
-    .filter({ hasText: 'public class MyClass { public' })
-    .nth(1)
-    .waitFor();
-
-  await page
-    .locator('#code div')
-    .filter({ hasText: 'public static void main(String args[]) {' })
-    .nth(1)
-    .waitFor();
-});
-
 When('Clicked on Execute option', async function (this: ICustomWorld) {
   const page = this.page!;
 
   await page.getByRole('button', { name: 'Execute' }).click();
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(2000);
 });
 
 When('{string} verify menu items', async function (this: ICustomWorld, Item: string) {
@@ -71,7 +55,7 @@ Given('Verify {string} language selection', async function (this: ICustomWorld, 
   }
 
   await page.getByRole('link', { name: language }).last().click();
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(2000);
 });
 
 Given('click on Price tab', async function () {
@@ -82,7 +66,7 @@ Given('click on Price tab', async function () {
   await page.getByRole('link', { name: 'Pricing' }).click();
 
   //Verification
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(2000);
 });
 
 Then('verify Platform Price page', async function () {
@@ -101,12 +85,38 @@ Then('verify Platform Price page', async function () {
     .toContainText(`Unlimited customizable WYSIWYG Plugins`);
   await expect.soft(page.getByRole('tabpanel')).toContainText(`File upload feature`);
   await expect.soft(page.getByRole('tabpanel')).toContainText(`Plugin to host page communication`);
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(2000);
 });
 
 Then('verify API Price page', async function () {
   // Write code here that turns the phrase above into concrete actions
   const page = this.page!;
   await page.getByRole('tab', { name: 'API' }).click();
-  await page.waitForTimeout(10000);
+  await expect.soft(page.getByRole('tabpanel')).toContainText(`Credits to execute your code`);
+  await expect.soft(page.getByRole('tabpanel')).toContainText(`API Usage Report`);
+  await expect.soft(page.getByRole('tabpanel')).toContainText(`Email Support`);
+  await expect.soft(page.getByRole('tabpanel')).toContainText(`Unlimited integration`);
+  await expect
+    .soft(page.getByRole('tabpanel'))
+    .toContainText(`Hassle-free integration process, reliable code execution`);
+  await expect.soft(page.getByRole('tabpanel')).toContainText(`$300`);
+  await expect.soft(page.getByRole('tabpanel')).toContainText(`/monthly`);
+
+  await page.waitForTimeout(2000);
+});
+
+Given('Code Snippet in editor', async function (this: ICustomWorld) {
+  const page = this.page!;
+
+  await page
+    .locator('#code div')
+    .filter({ hasText: 'public class MyClass { public' })
+    .nth(1)
+    .waitFor();
+
+  await page
+    .locator('#code div')
+    .filter({ hasText: 'public static void main(String args[]) {' })
+    .nth(1)
+    .waitFor();
 });

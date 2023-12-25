@@ -1,7 +1,7 @@
 @foo
 Feature: Verify JDoodle suites
 
-  Background: Navigation
+  Background: Navigate to Jdoodle website
     Given JDoodle website
 
  Scenario: Verify all hoverable menu items
@@ -17,13 +17,15 @@ Feature: Verify JDoodle suites
     Then Verify "NodeJS" language selection
     Then Verify "PHP" language selection
 
-@Scenario1
+
+
 Scenario: Verify Code pricing section
     Given click on Price tab
     Then verify Platform Price page
     Then verify API Price page
   
-
-Scenario: Verify Code execution #Currently blocked due to 
+@Scenario1
+Scenario: Verify Code execution #Currently blocked due to image handling issue: communicated to Gokul.
     Given Code Snippet in editor
     When Clicked on Execute option
+
