@@ -7,6 +7,7 @@ import { expect } from 'playwright/test';
 Given('JDoodle website', async function (this: ICustomWorld) {
   const page = this.page!;
   await page.goto(config.BASE_URL);
+  await page.locator('.absolute > button').click();
 });
 
 When('Clicked on Execute option', async function (this: ICustomWorld) {
